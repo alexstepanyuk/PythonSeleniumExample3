@@ -1,18 +1,15 @@
 # coding=utf-8
 import pytest
-from pages.search_page import SearchPage
+from pages.login_page import LoginPage
 from tests.base_test import BaseTest
 
 
 class TestSearch(BaseTest):
 
-    @pytest.fixture
-    def load_pages(self):
-        self.page = SearchPage(self.driver, self.wait)
-        self.page.go_to_search_page()
+    def test_login(self, load_pages):
+        self.login_page = LoginPage(self.driver, self.wait)
+        self.login_page.open()
 
-    def test_title(self, load_pages):
-        self.page.check_title("DuckDuckGo — La privacidad, simplificada.")
+        self.login_page.paste_username("admin")
+        self.login_page.click_login()
 
-    def test_search(self, load_pages):
-        self.page.make_a_search("Selenium")

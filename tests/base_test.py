@@ -27,6 +27,10 @@ def config():
 
 class BaseTest:
 
+    def __init__(self):
+        self.wait = None
+        self.driver = None
+
     @pytest.fixture(autouse=True)
     def init_driver(self):
         warnings.simplefilter("ignore", ResourceWarning)

@@ -27,9 +27,8 @@ def config():
 
 class BaseTest:
 
-    def __init__(self):
-        self.wait = None
-        self.driver = None
+    ADMIN = "admin"
+    ADMIN_PASSWORD = "admin20"
 
     @pytest.fixture(autouse=True)
     def init_driver(self):

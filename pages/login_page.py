@@ -10,7 +10,10 @@ class LoginPage(BasePage):
         self.locator = LoginPageLocators
 
     def paste_username(self, input_text):
-        self.paste_text(*self.locator.USERNAME_INPUT, input_text)
+        self.paste_text(self.locator.USERNAME_INPUT, input_text)
+
+    def get_username(self):
+        return self.get_value(self.locator.USERNAME_INPUT)
 
     def click_login(self):
-        self.click(*self.locator.LOGIN_BUTTON)
+        self.click(self.locator.LOGIN_BUTTON)
